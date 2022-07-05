@@ -27,7 +27,7 @@
 
 #define LSH_TOK_BUFSIZE 64
 #define LSH_TOK_DELIM " \t\r\n\a"
-char **lsh_split_line(char *lin){
+char **lsh_split_line(char *line){
         int bufsize = LSH_TOK_BUFSIZE, pos = 0 ; 
         char **tokens = malloc(bufsize * sizeof(char*));
         char *token;
@@ -51,7 +51,13 @@ char **lsh_split_line(char *lin){
 
                         }
                 }
+
+                token = strtok(NULL, LSH_TOK_DELIM); //tokenizes the string
+                                                     //I have also learned that a "delimiter" is something 
+                                                     //that indicates the end or end of section of data .
         }
+        tokens[pos] = NULL;
+        return tokens;
 }
 #define LSH_RL_BUFSIZE 1024 
 char *lsh_read_line(void){
