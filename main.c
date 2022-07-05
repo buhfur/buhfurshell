@@ -24,6 +24,35 @@
  * THE GNU C "getline()".
  *
  * I will include a version of the code with the getline() method as well .*/
+
+#define LSH_TOK_BUFSIZE 64
+#define LSH_TOK_DELIM " \t\r\n\a"
+char **lsh_split_line(char *lin){
+        int bufsize = LSH_TOK_BUFSIZE, pos = 0 ; 
+        char **tokens = malloc(bufsize * sizeof(char*));
+        char *token;
+
+        if(!tokens){
+                fprintf(stderr, "lsh: allocation error \n");
+                exit(EXIT_FAILURE);
+
+        }
+        token = strtok(line, LSH_TOK_DELIM);
+        while(token != NULL) {
+                tokens[pos] = token;
+                pos++;
+                if(pos >= bufsize){
+                        bufsize += LSH_TOK_BUFSIZE; 
+                        tokens = realloc(tokens, bufsize * sizeof(char*));
+
+                        if(!tokens){
+                                fprintf(stderr, "lsh: allocation error \n");
+                                exit(EXIT_FAILURE);
+
+                        }
+                }
+        }
+}
 #define LSH_RL_BUFSIZE 1024 
 char *lsh_read_line(void){
         /** Allocate memory for the line of input. */
