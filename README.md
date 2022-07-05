@@ -9,8 +9,8 @@ This is a shell I wrote while following a tutorial here
 
 TODO
 ---
-[] - finish the tutorial lmao 
-[] - Add quoting and backslash escaping 
-[] - Add config file functionality 
+[]- finish the tutorial lmao 
+[]- Add quoting and backslash escaping 
+[]- Add config file functionality 
  
 
